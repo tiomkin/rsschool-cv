@@ -14,3 +14,7 @@ I think my best features are:
 * perseverance
 * responsibility
 * good nature
+
+## Skills
+C#, .NET Core, ASP.NET Core, HTML, CSS, Git, GitHub, GitLab, Visual Studio, Visual Studio Code
+
