@@ -18,3 +18,11 @@ I think my best features are:
 ## Skills
 C#, .NET Core, ASP.NET Core, HTML, CSS, Git, GitHub, GitLab, Visual Studio, Visual Studio Code
 
+## Experience
+* EPAM .NET Development, 2021
+* ASP.NET Core MVC by A. Freeman book, Self-education
+
+## Languages
+* Belorussian (native)
+* Russian (native)
+* English (B1)
