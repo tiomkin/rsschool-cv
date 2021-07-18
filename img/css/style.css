@@ -1,0 +1,14 @@
+body {
+    background-color: #E4E6E7;
+}
+
+aside {
+    background-color: #C0D8DE;
+    width: 20%;
+    margin-top: 25px;
+}
+
+.container {
+    margin: 0 25px;
+    text-align: center;
+}
