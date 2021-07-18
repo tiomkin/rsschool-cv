@@ -1,13 +1,15 @@
 body {
-    background-color: #FFFFFF; /* #E4E6E7*/
+    margin-top: 25px;
+    background-color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
 }
 
 aside {
     background-color: #C0D8DE;
     width: 30%;
-    margin-top: 25px;
     padding: 15px 15px;
+    float: left;
+    height: 100%;
 }
 
 aside
@@ -22,6 +24,17 @@ section {
     font-weight: normal;
     text-align: justify;
     margin: 30px 0px;
+}
+
+main {
+    background-color: #E4E6E7;
+    margin-left: 31%;
+    padding: 15px 15px;
+    width: 70%;
+}
+
+main section {
+    margin: 30px 30px;
 }
 
 .line {
