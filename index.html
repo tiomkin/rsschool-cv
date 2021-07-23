@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>CV</title>
+</head>
+<body>
+    <header>
+        <h1>Student CV</h1>
+    </header>
+    <div class="container">
+        <aside>
+            <section id="logo">
+                <img class="center" src="/img/avatar-icon-4.jpg" width="150" alt="student-photo">
+                <h2>Artsiom <span class="normal"> Burdukou</span></h2>
+                <p class="profession">.NET Developer</p>
+            </section>
+            <section id="info">
+                <h2>Brief information</h2>
+                <p>
+                    I am a lawyer who decided to change his life because of relocating to Vilnius.
+                </p> 
+                <p>
+                    I dream to turn my previous web-programming hobby into the main job.
+                </p>
+                <p>
+                    As a lawyer I know what does it mean <i>"to work hard"</i>, <i>"researching"</i> and <i>"keep learning"</i>.
+                </p>
+                I think my best features are:
+                <ul>
+                    <li>perseverance</li>
+                    <li>responsibility</li>
+                    <li>good nature</li>
+                </ul> 
+            </section>
+            <hr class="line">
+            <section id="education">
+                <h2>Education</h2>
+                <ul>
+                    <li>
+                        <p>Belarusian State University, Legal Faculty, 2012 (Bachelor)</p>
+                    </li>
+                    <li>
+                        <p>Vilnius University, Legal Faculty, 2015 (Master)</p>
+                    </li>
+                </ul>
+            </section>
+            <hr class="line">
+            <section id="contacts">
+                <h2>Contacts</h2>
+                <ul>
+                    <li>
+                        <i class="fa fa-viber"></i>
+                        <a href="tel:+37060976323">+370 609-763-23</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:artsiomburdukou@gmail.com">artsiomburdukou@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-facebook"></i>
+                        <a href="https://www.facebook.com/tim.burdukov/">Facebook</a>  
+                    </li>
+                    <li>
+                        <i class="fas fa-linkedin"></i> 
+                        <a href="https://www.linkedin.com/in/artsiom-burdukou-94472849/">LinkedIn</a>
+                    </li>
+                </ul>
+            </section>
+        </aside>   
+        <main>
+            <section id="skills">
+                <h2>Skills</h2>
+                <table>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>C#</li>
+                                <li>.NET Core</li>
+                                <li>ASP.NET Core</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Git</li>
+                                <li>GitHub</li>
+                                <li>GitLab</li>
+                                <li>Visual Studio</li>
+                                <li>Visual Studio Code</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section id="code">
+                <h2>Code Example</h2>
+                <p>
+                    AdminController class (managing web-site users) from my education ASP.NET Core MVC project:
+                </p>
+                <pre>
+                    <code class="language-csharp">
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Project.Models;
+using Project.Models.ViewModels;
+using System;
+using System.Threading.Tasks;
+
+namespace Project.Controllers
+{
+    public class AdminController : Controller
+    {
+        private UserManager&lt;AppUser&gt; userManager;
+        private IUserValidator&lt;AppUser&gt; userValidator;
+        private IPasswordValidator&lt;AppUser&gt; passwordValidator;
+        private IPasswordHasher&lt;AppUser&gt; passwordHasher;
+        public AdminController(UserManager&lt;AppUser&gt; mgr,
+            IUserValidator&lt;AppUser&gt; uVal,
+            IPasswordValidator&lt;AppUser&gt; pVal,
+            IPasswordHasher&lt;AppUser&gt; pHash)
+        {
+            userManager = mgr;
+            userValidator = uVal;
+            passwordValidator = pVal;
+            passwordHasher = pHash;
+        }
+
+        public IActionResult Index() => View(userManager.Users);
+
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        public async Task&lt;IActionResult&gt; Create(CreateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser user = new()
+                {
+                    UserName = model.Name,
+                    Email = model.Email
+                };
+
+                IdentityResult result = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task&lt;IActionResult&gt; Delete(string id)
+        {
+            AppUser user = await userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                IdentityResult result = await userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    AddErrorsFromResult(result);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Пользователь не найден");
+            }
+
+            return View("Index", userManager.Users);
+        }
+
+        public async Task&lt;IActionResult&gt; Edit(string id)
+        {
+            AppUser user = await userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        public async Task&lt;IActionResult&gt; Edit(string id, string username, string email, string password)
+        {
+            AppUser user = await userManager.FindByIdAsync(id);
+
+            if (user != null)
+            {
+                user.UserName = username;
+                user.Email = email;
+                IdentityResult validEmail = await userValidator.ValidateAsync(userManager, user);
+
+                if (!validEmail.Succeeded)
+                {
+                    AddErrorsFromResult(validEmail);
+                }
+
+                IdentityResult validPass = null;
+
+                if (!string.IsNullOrEmpty(password))
+                {
+                    validPass = await passwordValidator.ValidateAsync(userManager, user, password);
+                    if (validPass.Succeeded)
+                    {
+                        user.PasswordHash = passwordHasher.HashPassword(user, password);
+                    }
+                    else
+                    {
+                        AddErrorsFromResult(validPass);
+                    }
+                }
+
+                if ((validEmail.Succeeded && validPass == null)
+                    || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded))
+                {
+                    IdentityResult result = await userManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        TempData["Message"] = $"Данные пользователя {user.UserName} успешно обновлены";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        AddErrorsFromResult(result);
+                    }
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Пользователь не найден");
+            }
+
+            return View(user);
+        }
+
+        private void AddErrorsFromResult(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+        }
+    }
+}
+                    </code>
+                </pre>
+            </section>
+            <section id="experience">
+                <h2>Experience</h2>
+                <ul>
+                    <li>EPAM .NET Development, 2021</li>
+                    <li>ASP.NET Core MVC by A. Freeman book, Self-education</li>
+                </ul>
+            </section>
+            <section id="languages">
+                <h2>Languages</h2>
+                <ul>
+                    <li>Belorussian (native)</li>
+                    <li>Russian (native)</li>
+                    <li>English (B1)</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>
+           <a href="https://rs.school/js/"><img src="https://rs.school/images/rs_school_js.svg" alt="Rsschool logo" width="64"></a>
+            &copy; 2021, <a href="https://github.com/tiomkin">GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>
