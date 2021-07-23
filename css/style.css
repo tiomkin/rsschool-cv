@@ -30,6 +30,10 @@ main {
     width: 70%;
 }
 
+header {
+    text-align: center;
+}
+
 footer {
     text-align: center;
 }
