@@ -110,7 +110,7 @@
 function bingo(ticket, win){
   let wins = 0;
   
-  for (let i = 0; i < ticket.length; i++) {
+  for (let i = 0; i<ticket.length; i++) {
     let curTicketField = ticket[i];
     if (hasMathes(curTicketField)) wins++;
   }
@@ -126,7 +126,7 @@ function bingo(ticket, win){
 function hasMathes(ticketField) {
   let [str, code] = ticketField;
   
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i<str.length; i++) {
     if (str.charCodeAt(i) === code) return true;
   }
 }
