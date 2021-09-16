@@ -79,13 +79,9 @@ code, pre, pre code {
     width: 50%;
 }
 
-.projects {
+.projects-container {
     display: flex;
     justify-content: space-between;
-}
-
-.projects h2 {
-    display: block;
 }
 
 .project-item {
