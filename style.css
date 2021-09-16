@@ -79,8 +79,11 @@ code, pre, pre code {
     width: 50%;
 }
 
-.project-item {
+.projects {
     display: flex;
     justify-content: space-between;
+}
+
+.project-item {
     width: 300px;
 }
