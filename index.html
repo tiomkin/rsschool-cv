@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <title>CV</title>
 </head>
 <body>
@@ -110,7 +112,7 @@
 function bingo(ticket, win){
   let wins = 0;
   
-  for (let i = 0; i<ticket.length; i++) {
+  for (let i = 0; i &lt; ticket.length; i++) {
     let curTicketField = ticket[i];
     if (hasMathes(curTicketField)) wins++;
   }
@@ -123,10 +125,10 @@ function bingo(ticket, win){
   }
 }
 
-function hasMathes(ticketField) {
+function hasMathes(ticketField){
   let [str, code] = ticketField;
   
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i &lt; str.length; i++) {
     if (str.charCodeAt(i) === code) return true;
   }
 }
@@ -156,7 +158,5 @@ function hasMathes(ticketField) {
             &copy; 2021, <a href="https://github.com/tiomkin">GitHub</a>
         </p>
     </footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
