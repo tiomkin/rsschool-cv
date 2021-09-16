@@ -84,6 +84,11 @@ code, pre, pre code {
     justify-content: space-between;
 }
 
+.projects h2 {
+    display: block;
+}
+
 .project-item {
+    display: flex;
     width: 300px;
 }
