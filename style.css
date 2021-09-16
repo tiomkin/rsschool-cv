@@ -38,6 +38,11 @@ footer {
     text-align: center;
 }
 
+code, pre, pre code {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
 .line {
     width: 75%;
     height: 1px;
