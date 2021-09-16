@@ -1,1 +1,1 @@
-https://tiomkin.github.io/rsschool-cv/cv
+https://tiomkin.github.io/rsschool-cv
