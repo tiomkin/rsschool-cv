@@ -82,7 +82,7 @@ code, pre, pre code {
 .projects-container {
     display: flex;
     justify-content: space-between;
-    padding-right: 15px;
+    padding-right: 30px;
 }
 
 .project-item {
