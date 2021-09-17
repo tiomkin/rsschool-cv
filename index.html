@@ -216,5 +216,16 @@ function hasMathes(ticketField){
             &copy; 2021, <a href="https://github.com/tiomkin">GitHub</a>
         </p>
     </footer>
+    <script>
+        function toggleBurger() {
+            let hiddenMenu = document.querySelector(".hiddenMenu");
+            console.log(hiddenMenu.style);
+            if (hiddenMenu.style.display === "block") {
+                hiddenMenu.style.display = "none";
+            } else {
+                hiddenMenu.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
