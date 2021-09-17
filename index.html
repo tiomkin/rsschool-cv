@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
@@ -14,13 +14,42 @@
 </head>
 <body>
     <header>
-        <h1>CV</h1>
+        <div class="top">
+            <h1>CV</h1>
+            <div class="burger" onclick="toggleBurger()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <nav class="nav">
+            <ul>
+                <a href="#info" class="nav-link"><li>Brief Info</li></a>
+                <a href="#education" class="nav-link"><li>Education</li></a>
+                <a href="#contacts" class="nav-link"><li>Contacts</li></a>
+                <a href="#skills" class="nav-link"><li>Skills</li></a>
+                <a href="#code" class="nav-link"><li>Code Example</li></a>
+                <a href="#experience" class="nav-link"><li>Experience</li></a>
+                <a href="#projects" class="nav-link"><li>Projects</li></a>
+                <a href="#languages" class="nav-link"><li>Languages</li></a>
+            </ul>
+        </nav>
     </header>
-    <div class="container">
+    <div class="hiddenMenu">
+        <ul>
+            <a href="#info" class="nav-link"><li>Brief Info</li></a>
+            <a href="#education" class="nav-link"><li>Education</li></a>
+            <a href="#contacts" class="nav-link"><li>Contacts</li></a>
+            <a href="#skills" class="nav-link"><li>Skills</li></a>
+            <a href="#code" class="nav-link"><li>Code Example</li></a>
+            <a href="#experience" class="nav-link"><li>Experience</li></a>
+            <a href="#projects" class="nav-link"><li>Projects</li></a>
+            <a href="#languages" class="nav-link"><li>Languages</li></a>
+        </ul>
+    </div>
+    <div class="container">        
         <aside>
             <section id="logo">
                 <figure>
-                    <img class="center" src="avatar-icon-4.jpg" width="150" alt="student-photo">
+                    <img class="center" src="img/avatar-icon-4.jpg" width="150" alt="student-photo">
                     <figcaption>
                         <p class="profession">.NET Developer</p>
                     </figcaption>
@@ -187,5 +216,16 @@ function hasMathes(ticketField){
             &copy; 2021, <a href="https://github.com/tiomkin">GitHub</a>
         </p>
     </footer>
+<script>
+    function toggleBurger() {
+        let hiddenMenu = document.querySelector(".hiddenMenu");
+        console.log(hiddenMenu.style);
+        if (hiddenMenu.style.display === "block") {
+            hiddenMenu.style.display = "none";
+        } else {
+            hiddenMenu.style.display = "block";
+        }
+    }
+</script>
 </body>
 </html>
