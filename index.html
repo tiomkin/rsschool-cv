@@ -3,22 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <title>CV</title>
 </head>
 <body>
     <header>
-        <h1>Student CV</h1>
+        <div class="top">
+            <h1>CV</h1>
+            <div class="burger" onclick="toggleBurger()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <nav class="nav">
+            <ul>
+                <a href="#info" class="nav-link"><li>Brief Info</li></a>
+                <a href="#education" class="nav-link"><li>Education</li></a>
+                <a href="#contacts" class="nav-link"><li>Contacts</li></a>
+                <a href="#skills" class="nav-link"><li>Skills</li></a>
+                <a href="#code" class="nav-link"><li>Code Example</li></a>
+                <a href="#experience" class="nav-link"><li>Experience</li></a>
+                <a href="#projects" class="nav-link"><li>Projects</li></a>
+                <a href="#languages" class="nav-link"><li>Languages</li></a>
+            </ul>
+        </nav>
     </header>
-    <div class="container">
+    <div class="hiddenMenu">
+        <ul>
+            <a href="#info" class="nav-link"><li>Brief Info</li></a>
+            <a href="#education" class="nav-link"><li>Education</li></a>
+            <a href="#contacts" class="nav-link"><li>Contacts</li></a>
+            <a href="#skills" class="nav-link"><li>Skills</li></a>
+            <a href="#code" class="nav-link"><li>Code Example</li></a>
+            <a href="#experience" class="nav-link"><li>Experience</li></a>
+            <a href="#projects" class="nav-link"><li>Projects</li></a>
+            <a href="#languages" class="nav-link"><li>Languages</li></a>
+        </ul>
+    </div>
+    <div class="container">        
         <aside>
             <section id="logo">
-                <img class="center" src="/img/avatar-icon-4.jpg" width="150" alt="student-photo">
+                <figure>
+                    <img class="center" src="img/avatar-icon-4.jpg" width="150" alt="student-photo">
+                    <figcaption>
+                        <p class="profession">.NET Developer</p>
+                    </figcaption>
+                </figure>
                 <h2>Artsiom <span class="normal"> Burdukou</span></h2>
-                <p class="profession">.NET Developer</p>
             </section>
             <section id="info">
                 <h2>Brief information</h2>
@@ -55,7 +91,7 @@
                 <h2>Contacts</h2>
                 <ul>
                     <li>
-                        <i class="fa fa-viber"></i>
+                        <i class="fab fa-viber"></i>
                         <a href="tel:+37060976323">+370 609-763-23</a>
                     </li>
                     <li>
@@ -67,7 +103,7 @@
                         <a href="https://www.facebook.com/tim.burdukov/">Facebook</a>  
                     </li>
                     <li>
-                        <i class="fas fa-linkedin"></i> 
+                        <i class="fab fa-linkedin"></i> 
                         <a href="https://www.linkedin.com/in/artsiom-burdukou-94472849/">LinkedIn</a>
                     </li>
                 </ul>
@@ -102,171 +138,32 @@
             <section id="code">
                 <h2>Code Example</h2>
                 <p>
-                    AdminController class (managing web-site users) from my education ASP.NET Core MVC project:
+                    <a href="https://www.codewars.com/kata/57f625992f4d53c24200070e">Lottery Ticket (Codewars)</a>
                 </p>
                 <pre>
-                    <code class="language-csharp">
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Project.Models;
-using Project.Models.ViewModels;
-using System;
-using System.Threading.Tasks;
+                    <code class="language-javascript">
+function bingo(ticket, win){
+  let wins = 0;
+  
+  for (let i = 0; i &lt; ticket.length; i++) {
+    let curTicketField = ticket[i];
+    if (hasMathes(curTicketField)) wins++;
+  }
+  
+  if (wins >= win) {
+    return 'Winner!';
+  }
+  else {
+    return 'Loser!';
+  }
+}
 
-namespace Project.Controllers
-{
-    public class AdminController : Controller
-    {
-        private UserManager&lt;AppUser&gt; userManager;
-        private IUserValidator&lt;AppUser&gt; userValidator;
-        private IPasswordValidator&lt;AppUser&gt; passwordValidator;
-        private IPasswordHasher&lt;AppUser&gt; passwordHasher;
-        public AdminController(UserManager&lt;AppUser&gt; mgr,
-            IUserValidator&lt;AppUser&gt; uVal,
-            IPasswordValidator&lt;AppUser&gt; pVal,
-            IPasswordHasher&lt;AppUser&gt; pHash)
-        {
-            userManager = mgr;
-            userValidator = uVal;
-            passwordValidator = pVal;
-            passwordHasher = pHash;
-        }
-
-        public IActionResult Index() => View(userManager.Users);
-
-        public IActionResult Create() => View();
-
-        [HttpPost]
-        public async Task&lt;IActionResult&gt; Create(CreateModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                AppUser user = new()
-                {
-                    UserName = model.Name,
-                    Email = model.Email
-                };
-
-                IdentityResult result = await userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    foreach (var error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
-            }
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public async Task&lt;IActionResult&gt; Delete(string id)
-        {
-            AppUser user = await userManager.FindByIdAsync(id);
-
-            if (user != null)
-            {
-                IdentityResult result = await userManager.DeleteAsync(user);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    AddErrorsFromResult(result);
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Пользователь не найден");
-            }
-
-            return View("Index", userManager.Users);
-        }
-
-        public async Task&lt;IActionResult&gt; Edit(string id)
-        {
-            AppUser user = await userManager.FindByIdAsync(id);
-
-            if (user != null)
-            {
-                return View(user);
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }
-
-        [HttpPost]
-        public async Task&lt;IActionResult&gt; Edit(string id, string username, string email, string password)
-        {
-            AppUser user = await userManager.FindByIdAsync(id);
-
-            if (user != null)
-            {
-                user.UserName = username;
-                user.Email = email;
-                IdentityResult validEmail = await userValidator.ValidateAsync(userManager, user);
-
-                if (!validEmail.Succeeded)
-                {
-                    AddErrorsFromResult(validEmail);
-                }
-
-                IdentityResult validPass = null;
-
-                if (!string.IsNullOrEmpty(password))
-                {
-                    validPass = await passwordValidator.ValidateAsync(userManager, user, password);
-                    if (validPass.Succeeded)
-                    {
-                        user.PasswordHash = passwordHasher.HashPassword(user, password);
-                    }
-                    else
-                    {
-                        AddErrorsFromResult(validPass);
-                    }
-                }
-
-                if ((validEmail.Succeeded && validPass == null)
-                    || (validEmail.Succeeded && password != string.Empty && validPass.Succeeded))
-                {
-                    IdentityResult result = await userManager.UpdateAsync(user);
-                    if (result.Succeeded)
-                    {
-                        TempData["Message"] = $"Данные пользователя {user.UserName} успешно обновлены";
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        AddErrorsFromResult(result);
-                    }
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Пользователь не найден");
-            }
-
-            return View(user);
-        }
-
-        private void AddErrorsFromResult(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error.Description);
-            }
-        }
-    }
+function hasMathes(ticketField){
+  let [str, code] = ticketField;
+  
+  for (let i = 0; i &lt; str.length; i++) {
+    if (str.charCodeAt(i) === code) return true;
+  }
 }
                     </code>
                 </pre>
@@ -278,10 +175,35 @@ namespace Project.Controllers
                     <li>ASP.NET Core MVC by A. Freeman book, Self-education</li>
                 </ul>
             </section>
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="projects-container">
+                    <div class="project-item">
+                        <figure>
+                            <a href="https://rolling-scopes-school.github.io/tiomkin-JSFEPRESCHOOL/drum-kit/" target="_blank"><img src="img/drum-kit-medium.png" alt="drum-kit"></a>
+                            <figcaption>
+                                <p><b>Name:</b> Drum-Kit</p>
+                                <p><b>Description:</b> Play Drums online using keyboard or mouse.</p>
+                                <p><b>Technology:</b> html, css, javascript</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="project-item">
+                        <figure>
+                            <a href="https://rolling-scopes-school.github.io/tiomkin-JSFEPRESCHOOL/museum/" target="_blank"><img src="img/museum-medium.png" alt="museum"></a>
+                            <figcaption>
+                                <p><b>Name:</b> Museum</p>
+                                <p><b>Description:</b> Web-site of Louvre Museum.</p>
+                                <p><b>Technology:</b> html, css</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>       
+            </section>    
             <section id="languages">
                 <h2>Languages</h2>
                 <ul>
-                    <li>Belorussian (native)</li>
+                    <li>Belarusian (native)</li>
                     <li>Russian (native)</li>
                     <li>English (B1)</li>
                 </ul>
@@ -294,5 +216,16 @@ namespace Project.Controllers
             &copy; 2021, <a href="https://github.com/tiomkin">GitHub</a>
         </p>
     </footer>
+<script>
+    function toggleBurger() {
+        let hiddenMenu = document.querySelector(".hiddenMenu");
+        console.log(hiddenMenu.style);
+        if (hiddenMenu.style.display === "block") {
+            hiddenMenu.style.display = "none";
+        } else {
+            hiddenMenu.style.display = "block";
+        }
+    }
+</script>
 </body>
 </html>
